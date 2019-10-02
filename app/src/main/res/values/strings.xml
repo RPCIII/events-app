@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">events-app</string>
+    <string name="baseInput">0</string>
+    <string name="inputA">A<sup>2</sup></string>
+    <string name="inputB">B<sup>2</sup></string>
+    <string name="inputC">C<sup>2</sup></string>
+    <string name="equals">=</string>
+    <string name="output">Output = </string>
+    <string name="pythagTheorem">The Pythagorean Theorem is an equation that allows the user to find the lengths
+    of a triangle given the length of two sides of the triangle using the equation a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></string>
+    <string name="calc">Calculate</string>
+    <string name="clear">Clear</string>
+    <string name="close">Close</string>
+    <string name="exitTitle">Exit</string>
+    <string name="exitMessage">You\'re about to exit. Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+</resources>
