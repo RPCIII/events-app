@@ -1,6 +1,5 @@
 package com.example.events_app
 
-import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -22,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     fun getNumericInput(view: View) {
         val output = findViewById<TextView>(R.id.output)    //find output TextView
 
-        val wrongInput = Toast.makeText(this, "Input two numbers!", Toast.LENGTH_LONG)    //toast for error message
+        val wrongInput = Toast.makeText(this, "Input two numbers only!", Toast.LENGTH_LONG)    //toast for error message
 
         //get the sides from the inputs with validation
         val sideA = getInputA()
@@ -103,8 +102,28 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    //clears all input fields
-    fun clearNumericInput(view: View) {
+    //button entry to clear input fields after confirmation
+    fun clearButton(view: View) {
+
+        val alertDialog = AlertDialog.Builder(this)
+
+        alertDialog.setMessage(R.string.clearMessage)
+
+        alertDialog.setPositiveButton(R.string.yes) { dialog, id -> clearFields() }
+
+        alertDialog.setNegativeButton(R.string.no) { dialog, id -> dialog.cancel() }
+
+        val alert = alertDialog.create()
+
+        alert.setTitle(R.string.clearTitle)
+
+        alert.show()
+
+    }
+
+
+    //clears all fields after confirmation received
+    fun clearFields(){
         val inputA = findViewById<EditText>(R.id.input_a).apply {
             text.clear()
         }
@@ -113,6 +132,9 @@ class MainActivity : AppCompatActivity() {
         }
         val inputC = findViewById<EditText>(R.id.input_c).apply {
             text.clear()
+        }
+        val output = findViewById<TextView>(R.id.output).apply {
+            text = ""
         }
     }
 
@@ -123,13 +145,9 @@ class MainActivity : AppCompatActivity() {
 
         alertDialog.setMessage(R.string.exitMessage)
 
-        alertDialog.setPositiveButton(R.string.yes, DialogInterface.OnClickListener {
-                dialog, id -> System.exit(0)
-        })
+        alertDialog.setPositiveButton(R.string.yes) { dialog, id -> System.exit(0) }
 
-        alertDialog.setNegativeButton(R.string.no, DialogInterface.OnClickListener {
-                dialog, id -> dialog.cancel()
-        })
+        alertDialog.setNegativeButton(R.string.no) { dialog, id -> dialog.cancel() }
 
         val alert = alertDialog.create()
 
